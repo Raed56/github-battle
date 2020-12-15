@@ -17,7 +17,16 @@ module.exports = {
         filename: "index_bundle.js",
     },
 
-    plugins: [new HtmlWebpackPlugin()],
+    plugins: [
+        new HtmlWebpackPlugin({
+            template: "app/index.html",
+        }),
+    ],
 
-    mode: process.env.NODE_ENV === "production" ? "production" : "development",
+    mode: "development",
+
+    devServer: {
+        open: true,
+        port: 3000,
+    },
 };

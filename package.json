@@ -6,7 +6,13 @@
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
         "start": "webpack serve",
-        "build": "set NODE_ENV=production&&webpack"
+        "build": "webpack"
+    },
+    "babel": {
+        "presets": [
+            "@babel/preset-env",
+            "@babel/preset-react"
+        ]
     },
     "author": "",
     "license": "ISC",
