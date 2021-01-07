@@ -15,15 +15,17 @@ export default class Loading extends React.Component {
         super(props);
 
         this.state = {
-            content: "Loading",
+            content: props.text,
         };
     }
     componentDidMount() {
+        const { speed, text } = this.props;
+
         this.interval = window.setInterval(() => {
-            this.state.content === "Loading" + "..."
-                ? this.setState({ content: "Loading" })
+            this.state.content === text + "..."
+                ? this.setState({ content: text })
                 : this.setState(({ content }) => ({ content: content + "." }));
-        }, 300);
+        }, speed);
     }
     componentWillUnmount() {
         window.clearInterval(this.interval);
@@ -32,3 +34,8 @@ export default class Loading extends React.Component {
         return <p style={styles.content}>{this.state.content}</p>;
     }
 }
+
+Loading.defaultProps = {
+    text: "Loading",
+    speed: 300,
+};
