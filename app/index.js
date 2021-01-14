@@ -4,6 +4,7 @@ import "./index.css";
 import Popular from "./components/Popular";
 import Battle from "./components/Battle";
 import { ThemeProvider } from "./contexts/theme";
+import Nav from "./components/nav";
 
 class App extends React.Component {
     constructor(props) {
@@ -19,9 +20,12 @@ class App extends React.Component {
     }
     render() {
         return (
-            <ThemeProvider value={}>
-                <div className="container">
-                    <Battle />
+            <ThemeProvider value={this.state}>
+                <div className={this.state.theme}>
+                    <div className="container">
+                        <Nav />
+                        <Battle />
+                    </div>
                 </div>
             </ThemeProvider>
         );
