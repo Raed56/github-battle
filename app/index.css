@@ -210,6 +210,13 @@ li {
     background: #141414;
 }
 
+.space-between {
+    justify-content: space-between;
+}
+.nav li {
+    margin-right: 10px;
+}
+
 .dark-btn:disabled {
     background: #f2f2f2;
     color: #c7c7c7;
