@@ -5,7 +5,6 @@ import {
     FaBriefcase,
     FaUsers,
     FaUserFriends,
-    FaCode,
     FaUser,
 } from "react-icons/fa";
 import Card from "./Card";

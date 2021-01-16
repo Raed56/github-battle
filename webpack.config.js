@@ -15,6 +15,7 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, "dist"),
         filename: "index_bundle.js",
+        publicPath: "/",
     },
 
     plugins: [
@@ -28,5 +29,6 @@ module.exports = {
     devServer: {
         open: true,
         port: 3000,
+        historyApiFallback: true,
     },
 };
