@@ -1,5 +1,4 @@
 import React from "react";
-
 import {
     FaUserFriends,
     FaFighterJet,
@@ -9,6 +8,7 @@ import {
 
 import Results from "./Results";
 import { ThemeConsumer } from "../contexts/theme";
+import { Link } from "react-router-dom";
 
 function Instructions() {
     return (
@@ -19,7 +19,7 @@ function Instructions() {
                     <ol className="container-sm grid center-text battle-instructions">
                         <li>
                             <h3 className="header-sm">
-                                Enter two Github Users
+                                Enter two Github users
                             </h3>
                             <FaUserFriends
                                 className={`bg-${theme}`}
@@ -36,10 +36,10 @@ function Instructions() {
                             />
                         </li>
                         <li>
-                            <h3 className="header-sm">See the winners</h3>
+                            <h3 className="header-sm">See the Winners</h3>
                             <FaTrophy
                                 className={`bg-${theme}`}
-                                color="rgb(255,215,0)"
+                                color="rgb(255, 215, 0)"
                                 size={140}
                             />
                         </li>
@@ -62,24 +62,22 @@ class PlayerInput extends React.Component {
         this.handleChange = this.handleChange.bind(this);
     }
 
-    handleSubmit(event) {
-        event.preventDefault();
-
-        this.props.onSubmit(this.state.username);
-    }
-
     handleChange(event) {
         this.setState({
             username: event.target.value,
         });
     }
+    handleSubmit(event) {
+        event.preventDefault();
 
+        this.props.onSubmit(this.state.username);
+    }
     render() {
         return (
             <ThemeConsumer>
                 {({ theme }) => (
                     <form
-                        className="coloumn player"
+                        className="column player"
                         onSubmit={this.handleSubmit}
                     >
                         <label htmlFor="username" className="player-label">
@@ -116,7 +114,7 @@ function PlayerPreview({ username, onReset, label }) {
     return (
         <ThemeConsumer>
             {({ theme }) => (
-                <div className="coloumn player">
+                <div className="column player">
                     <h3 className="player-label">{label}</h3>
                     <div className={`row bg-${theme}`}>
                         <div className="player-info">
@@ -126,8 +124,8 @@ function PlayerPreview({ username, onReset, label }) {
                                 alt={`Avatar for ${username}`}
                             />
                             <a
-                                className="link"
                                 href={`https://github.com/${username}`}
+                                className="link"
                             >
                                 {username}
                             </a>
@@ -136,7 +134,7 @@ function PlayerPreview({ username, onReset, label }) {
                             className="btn-clear flex-center"
                             onClick={onReset}
                         >
-                            <FaTimesCircle color="rgb(194,57,42)" size={26} />
+                            <FaTimesCircle color="rgb(194, 57, 42)" size={26} />
                         </button>
                     </div>
                 </div>
@@ -144,7 +142,6 @@ function PlayerPreview({ username, onReset, label }) {
         </ThemeConsumer>
     );
 }
-
 export default class Battle extends React.Component {
     constructor(props) {
         super(props);
@@ -152,7 +149,6 @@ export default class Battle extends React.Component {
         this.state = {
             playerOne: null,
             playerTwo: null,
-            battle: false,
         };
 
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -172,23 +168,7 @@ export default class Battle extends React.Component {
     }
 
     render() {
-        const { playerOne, playerTwo, battle } = this.state;
-
-        if (battle === true) {
-            return (
-                <Results
-                    playerOne={playerOne}
-                    playerTwo={playerTwo}
-                    onReset={() =>
-                        this.setState({
-                            playerOne: null,
-                            playerTwo: null,
-                            battle: false,
-                        })
-                    }
-                />
-            );
-        }
+        const { playerOne, playerTwo } = this.state;
 
         return (
             <React.Fragment>
@@ -210,6 +190,7 @@ export default class Battle extends React.Component {
                                 onReset={() => this.handleReset("playerOne")}
                             />
                         )}
+
                         {playerTwo === null ? (
                             <PlayerInput
                                 label="Player Two"
@@ -227,12 +208,15 @@ export default class Battle extends React.Component {
                     </div>
 
                     {playerOne && playerTwo && (
-                        <button
-                            className="btn dark-btn btn-space"
-                            onClick={() => this.setState({ battle: true })}
+                        <Link
+                            className="dark-btn btn btn-space"
+                            to={{
+                                pathname: "/battle/results",
+                                search: `?playerOne=${playerOne}&playerTwo=${playerTwo}`,
+                            }}
                         >
                             Battle
-                        </button>
+                        </Link>
                     )}
                 </div>
             </React.Fragment>
