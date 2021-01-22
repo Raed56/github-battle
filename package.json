@@ -17,14 +17,14 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/niloyKGhosh/github-battle.git"
+        "url": "git+https://github.com/raed56/github-battle.git"
     },
     "author": "",
     "license": "ISC",
     "bugs": {
-        "url": "https://github.com/niloyKGhosh/github-battle/issues"
+        "url": "https://github.com/raed56/github-battle/issues"
     },
-    "homepage": "https://github.com/niloyKGhosh/github-battle#readme",
+    "homepage": "https://github.com/raed56/github-battle#readme",
     "dependencies": {
         "query-string": "^6.13.8",
         "react": "^17.0.1",
