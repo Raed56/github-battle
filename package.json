@@ -6,7 +6,7 @@
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
         "start": "webpack serve",
-        "build": "NODE_ENV= 'production' webpack",
+        "build": "NODE_ENV='production' webpack",
         "build-for-windows": "set NODE_ENV=production&&webpack"
     },
     "babel": {
