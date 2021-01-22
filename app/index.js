@@ -4,9 +4,10 @@ import "./index.css";
 import Popular from "./components/Popular";
 import Battle from "./components/Battle";
 import { ThemeProvider } from "./contexts/theme";
-import Nav from "./components/Nav";
+
 import Results from "./components/Results";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Nav from "./components/Nav";
 
 class App extends React.Component {
     constructor(props) {
